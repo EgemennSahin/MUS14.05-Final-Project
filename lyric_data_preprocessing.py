@@ -1,3 +1,4 @@
+# The second part in a series of scripts to generate data froms lyrics from Genius.com
 import re
 
 def remove_text(text):
@@ -14,6 +15,13 @@ def remove_text(text):
 
     # Remove translation words that come after the space after Embed such as: "TranslationsTürkçePortuguês"
     text = re.sub(r'\bTranslations\w*\s*', '', text)
+
+    # Remove the lines that start with [
+    text = re.sub(r'^\[[^\]]*\].*$', '', text, flags=re.MULTILINE)
+
+    # Remove the lines that end with ]
+    text = re.sub(r'^.*\].*$', '', text, flags=re.MULTILINE)
+
     
 
     return text.strip()
@@ -54,7 +62,7 @@ def preprocess_into_data(input_file_path):
 
 
 # Process the Drake lyrics file
-process_lyrics_file('Drake_lyrics.txt', 'processed_Drake_lyrics.txt')
+# process_lyrics_file('Drake_lyrics.txt', 'processed_Drake_lyrics.txt')
 
 # Process the Kanye West lyrics file
 process_lyrics_file('Kanye West_lyrics.txt', 'processed_Kanye West_lyrics.txt')

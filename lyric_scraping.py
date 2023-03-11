@@ -1,3 +1,4 @@
+# The first part in a series of scripts to generate data froms lyrics from Genius.com
 import lyricsgenius
 from dotenv import load_dotenv
 import os

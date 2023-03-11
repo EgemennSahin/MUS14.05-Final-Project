@@ -1,3 +1,4 @@
+# Finetuning the GPT-2 model from the data from lyric_data_preprocessing.py:
 from lyric_data_preprocessing import preprocess_into_data
 from transformers import GPT2Tokenizer, GPT2LMHeadModel, DataCollatorForLanguageModeling, Trainer, TrainingArguments
 
@@ -47,3 +48,4 @@ def train_model(processed_lyrics, name):
     tokenizer.save_pretrained(tokenizer_path)
 
 
+train_model("processed_Kanye West_lyrics.txt", "kanye")
